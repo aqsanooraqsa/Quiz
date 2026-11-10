@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Development: 50 tricky MCQs</title>
+<style>
+:root{--bg:#faf9f5;--card:#fff;--tx:#1f1e1d;--mu:#6b6a65;--bd:#d9d6cc;--ok:#e3f1d8;--okb:#3b6d11;--no:#fbe3e1;--nob:#a32d2d;--ac:#534ab7;--cb:#f1efe8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1e1d;--card:#2b2a28;--tx:#f1efe8;--mu:#a8a69e;--bd:#454340;--ok:#27401a;--okb:#97c459;--no:#4a1f1f;--nob:#f09595;--ac:#afa9ec;--cb:#1a1918}}
+:root[data-theme="dark"]{--bg:#1f1e1d;--card:#2b2a28;--tx:#f1efe8;--mu:#a8a69e;--bd:#454340;--ok:#27401a;--okb:#97c459;--no:#4a1f1f;--nob:#f09595;--ac:#afa9ec;--cb:#1a1918}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;font-weight:500;margin:0 0 4px}
+.sub{color:var(--mu);font-size:14px;margin:0 0 16px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;display:flex;justify-content:space-between;align-items:center;font-size:14px;border-bottom:1px solid var(--bd);margin-bottom:16px;z-index:5}
+button{font:inherit;cursor:pointer}
+.rs{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:8px;padding:4px 12px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:16px}
+.n{color:var(--ac);font-size:13px;font-weight:500;margin-bottom:4px}
+.t{margin:0 0 8px}
+pre{background:var(--cb);border-radius:8px;padding:10px 12px;margin:0 0 10px;overflow-x:auto;font:13px/1.5 ui-monospace,Consolas,monospace}
+.o{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o.ok{background:var(--ok);border-color:var(--okb)}
+.o.no{background:var(--no);border-color:var(--nob)}
+.e{display:none;margin-top:12px;font-size:14px;color:var(--mu);border-top:1px solid var(--bd);padding-top:10px}
+.res{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;display:none}
+</style>
+</head>
+<body>
+<main>
+<h1>Web Development: 50 tricky MCQs</h1>
+<p class="sub">HTML, CSS and Flexbox. Tap an answer to see if you’re right. Order and options are shuffled each time.</p>
+<div class="bar"><span id="sc">Score: 0 / 0</span><button class="rs" onclick="start()">Reshuffle</button></div>
+<div id="qs"></div>
+<div class="res" id="res"></div>
+</main>
+<script>
+var R=[
+["Which tag forces a line break without starting a new paragraph?","<br>","<lb>","<break>","<hr>","<br> only breaks the line. <hr> draws a horizontal line."],
+["Which pair contains only void elements (no closing tag)?","<br> and <hr>","<p> and <br>","<hr> and <div>","<img> and <a>","p, div and a all need closing tags."],
+["Which tag makes text bold and also marks it as important?","<strong>","<b>","<bold>","<em>","<strong> adds importance; <b> is only visual."],
+["Which code displays the © symbol?","&copy;","&c;","&cp;","&(c);","The entity for copyright is &copy;."],
+["You type five spaces between two words in HTML. How many does the browser show?","One","Five","Two","None","Extra spaces collapse. Use &nbsp; to keep them."],
+["Which is a valid HTML comment?","<!-- note -->","// note","/* note */","# note","/* */ is the CSS comment style."],
+["Which attribute shows alternative text when an image can’t load?","alt","title","src","caption","alt is also read aloud by screen readers."],
+["What is the default value of a link’s target attribute?","_self","_blank","_top","_new","_self opens the page in the same tab."],
+["Which attribute makes an <a> tag a working link?","href","src","link","url","href holds the destination."],
+["<li> items can be placed directly inside which elements?","<ul> and <ol>","<ul> only","<ol> only","<div> and <p>","li works in both unordered and ordered lists."],
+["Which nesting is correct for a table?","<table><tr><td>","<table><td><tr>","<tr><table><td>","<table><th><tr>","A table holds rows, and rows hold cells."],
+["What does rowspan='2' do?","The cell stretches down across two rows","The cell stretches across two columns","The table gets two rows","The cell is repeated twice","colspan goes across; rowspan goes down."],
+["Which form method shows the submitted data in the page URL?","GET","POST","PUT","SEND","POST sends the data in the request body instead."],
+["Which attribute makes an <option> chosen by default?","selected","checked","default","active","checked is for checkboxes and radio buttons."],
+["Which element creates a multi-line text box?","<textarea>","<input type='multiline'>","<text>","<input type='text'>","type='text' is a single line only."],
+["What is true about the placeholder attribute?","It shows grey hint text that is not submitted as the value","Its text is sent with the form","It makes the field required","It sets the default value","Use value for a real default and required for a mandatory field."],
+["Which is NOT a semantic element?","<div>","<nav>","<article>","<footer>","div says nothing about what its content is."],
+["Which statement is correct?","A class can be reused; an id should be unique","An id can be reused on many elements; a class is unique","Both must be unique","Neither can be used in CSS","IDs identify one element; classes group many."],
+["Which is correct CSS syntax?","p { color: red; }","p: { color = red }","p ( color: red; )","{ p; color: red }","Selector, braces, then property: value;"],
+["How is an external stylesheet linked?","<link rel='stylesheet' href='style.css'> in the head","<style src='style.css'> in the body","<css href='style.css'>","<script href='style.css'>","The link tag belongs in the head."],
+["Which method of applying CSS has the highest priority?","Inline style","Internal <style>","External file","They are all equal","Inline styles override the others."],
+["Which selector styles a link while the mouse is over it?","a:hover","a.hover","a#hover","a>hover","The :hover pseudo-class reacts to the pointer."],
+["Which selector matches only direct li children of a ul?","ul > li","ul li","ul + li","ul, li","ul li also matches deeper nested items."],
+["Which selector targets class='intro'?",".intro","#intro","intro","*intro","Dot is for classes, hash is for ids."],
+["Which value gives pure blue?","rgb(0, 0, 255)","rgb(255, 0, 0)","rgb(0, 255, 0)","#ff0000","rgb is red, green, blue in that order."],
+["In margin: 10px 20px 30px 40px, which value is the left margin?","40px","10px","20px","30px","The order is top, right, bottom, left."],
+["Which is a correct border shorthand?","border: 2px solid red;","border: 2px red;","border = 2px solid red;","border: (2px, solid, red);","A visible border needs a style such as solid."],
+["How do you horizontally centre a block div that has a set width?","margin: 0 auto;","text-align: center;","align: center;","float: center;","Auto side margins centre a block with a width."],
+["text-align: center on a div centres what?","The text and inline content inside it","The div itself on the page","Only images","Nothing unless it is a flex container","To centre the div itself, use auto margins."],
+["Which hides an element but keeps its space?","visibility: hidden;","display: none;","opacity: 1;","hidden: true;","display: none removes it from the layout entirely."],
+["z-index only has an effect on elements that are…","Positioned (not static)","Floated","Inline","Inside a table","Set a position value first."],
+["Which unit is relative to the element’s font size?","em","px","cm","pt","em scales with font-size; px is fixed."],
+["width: 50% means 50% of…","The parent’s width","The screen height","The element’s own height","The body font size","Percentages refer to the containing block."],
+["What happens to text next to an image with float: left?","It wraps around the image","It is hidden","It sits below the image","It overlaps the image","Floats let text flow around them."],
+["In font-family: 'Roboto', Arial, sans-serif; what is Arial?","A fallback font","The main font","A font size","A syntax error","The browser moves to the next font if the first is unavailable."],
+["Which removes the bullet points from a ul?","list-style-type: none;","bullet: none;","text-decoration: none;","display: no-bullets;","list-style-type controls the markers."],
+["With box-sizing: border-box, width: 200px and padding: 20px, the element’s total width (excluding margin) is…","200px","240px","220px","160px","border-box includes padding and border inside the width."],
+["top: 20px has no effect on an element whose position is…","static","relative","absolute","fixed","static is the default and ignores top, left, right and bottom."],
+["Which justify-content value puts the first item at the start, the last at the end, with equal gaps between?","space-between","space-around","center","flex-start","space-around adds half-size gaps at the edges."],
+["In a row flex container, align-items: center centres items along which axis?","Vertically (cross axis)","Horizontally (main axis)","Both axes","Neither","justify-content handles the main axis."],
+["What does flex-wrap: wrap allow?","Items move to a new line when space runs out","Text inside items to wrap","Items to shrink to nothing","Items to reverse direction","The default is nowrap."],
+["What does order: -1 do to a flex item?","Moves it before items with the default order of 0","Moves it to the end","Hides it","Reverses the container","Lower order values come first."],
+["Three flex items each have flex: 1. How are they sized?","Equal widths","Widths based on their content","The first is largest","They do not grow","flex: 1 means a basis of 0, so free space is shared equally."],
+["Which property lets one item ignore the container’s align-items?","align-self","justify-self","align-content","flex-align","align-self overrides it for a single item."],
+["Which property adds space between flex items without using margins?","gap","spacing","padding-between","flex-space","gap adds space only between items, not at the edges."],
+["Which container property aligns items along the main axis?","justify-content","align-items","align-self","order","With flex-direction: column the main axis is vertical."],
+["Which tag helps pages scale correctly on phones?","<meta name='viewport' content='width=device-width, initial-scale=1.0'>","<meta name='mobile' content='true'>","<link rel='mobile'>","<viewport width='auto'>","It goes in the head."],
+["@media (max-width: 768px) applies when the screen is…","768px wide or narrower","768px wide or wider","Exactly 768px","Taller than 768px","max-width includes the value itself."],
+["Which query type suits a mobile-first approach?","min-width","max-width","max-height","orientation","Write small-screen styles first, then add min-width queries."],
+["Which at-rule applies CSS only under conditions like screen size?","@media","@import","@screen-size","@if","@media wraps conditional rules."]
+];
+var D=R.map(function(r){return{q:r[0],a:[r[1],r[2],r[3],r[4]],e:r[5]}});
+var done,right;
+function sh(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
+function upd(){document.getElementById("sc").textContent="Score: "+right+" / "+done;if(done===D.length){var r=document.getElementById("res");r.style.display="block";r.textContent="Finished: "+right+" out of "+D.length+(right===D.length?". Perfect score!":right>=D.length*0.7?". Solid preparation.":". Review the explanations and try again.")}}
+function start(){
+done=0;right=0;document.getElementById("res").style.display="none";
+var box=document.getElementById("qs");box.textContent="";
+sh(D).forEach(function(d,i){
+var card=el("div","q");card.appendChild(el("div","n","Question "+(i+1)));card.appendChild(el("p","t",d.q));
+if(d.c){card.appendChild(el("pre","",d.c))}
+var ex=el("div","e","Explanation: "+d.e);var btns=[];
+sh(d.a).forEach(function(o){
+var b=el("button","o",o);btns.push(b);
+b.onclick=function(){
+btns.forEach(function(x){x.disabled=true;if(x.textContent===d.a[0])x.classList.add("ok")});
+if(o===d.a[0])right++;else b.classList.add("no");
+ex.style.display="block";done++;upd()};
+card.appendChild(b)});
+card.appendChild(ex);box.appendChild(card)});
+upd();window.scrollTo(0,0)}
+start();
+</script>
+</body>
+</html>
